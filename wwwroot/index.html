@@ -7,11 +7,11 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #f0f0f0; /* light gray background */
+      background-color: #f0f0f0;
     }
 
     header {
-      background-color: #111; /* black header */
+      background-color: #111;
       color: white;
       padding: 15px 25px;
       text-align: center;
@@ -19,6 +19,28 @@
       font-weight: bold;
       letter-spacing: 1px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+
+    .kpis {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+
+    .kpi-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .kpi-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     .container {
@@ -35,14 +57,12 @@
       flex: 1;
     }
 
-    /* Events table card stays on the left */
     #events-card {
-      flex: 2; /* wider */
+      flex: 2;
     }
 
-    /* Alerts card stays on the right */
     #alerts-card {
-      flex: 1; /* narrower */
+      flex: 1;
     }
 
     table {
@@ -114,20 +134,31 @@
       background: linear-gradient(90deg, #0056b3, #003f7f);
       transform: scale(1.05);
     }
-
-    #health {
-      font-weight: bold;
-    }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.0/signalr.min.js"></script>
 </head>
 <body>
   <header>🔒 Real-time Security & Compliance Dashboard</header>
 
+  <!-- KPI Cards -->
+  <div class="kpis">
+    <div class="kpi-card">
+      <div>Total Events</div>
+      <div class="kpi-value" id="kpi-events">0</div>
+    </div>
+    <div class="kpi-card">
+      <div>Total Alerts</div>
+      <div class="kpi-value" id="kpi-alerts">0</div>
+    </div>
+    <div class="kpi-card">
+      <div>Compliance Health</div>
+      <div class="kpi-value" id="kpi-health">100%</div>
+    </div>
+  </div>
+
   <div class="container">
     <!-- Left side: Events -->
     <div class="card" id="events-card">
-      <div><strong>Compliance Health:</strong> <span id="health">100%</span></div>
       <h3>Live Events</h3>
       <table>
         <thead>
@@ -149,7 +180,10 @@
   <script>
     const eventsTbody = document.getElementById('events');
     const alertsDiv = document.getElementById('alerts');
-    const healthSpan = document.getElementById('health');
+
+    const kpiEvents = document.getElementById('kpi-events');
+    const kpiAlerts = document.getElementById('kpi-alerts');
+    const kpiHealth = document.getElementById('kpi-health');
 
     let totalEvents=0, totalAlerts=0;
 
@@ -157,12 +191,12 @@
 
     conn.on("NewEvent", ev => {
       addEvent(ev);
-      recomputeHealth();
+      recomputeKPIs();
     });
 
     conn.on("Alert", a => {
       addAlert(a);
-      recomputeHealth();
+      recomputeKPIs();
     });
 
     conn.start().catch(e => console.error("SignalR start error:", e));
@@ -188,11 +222,17 @@
       while(alertsDiv.children.length>10) alertsDiv.removeChild(alertsDiv.lastChild);
     }
 
-    function recomputeHealth(){
-      const ratio = Math.min(1, totalAlerts / Math.max(1, totalEvents));
-      const health = Math.round((1 - ratio) * 100);
-      healthSpan.textContent = `${health}%`;
-      healthSpan.style.color = health>80 ? 'green' : health>50 ? 'orange' : 'red';
+    function recomputeKPIs(){
+      const health = Math.round((1 - (totalAlerts / Math.max(1, totalEvents))) * 100);
+
+      kpiEvents.textContent = totalEvents;
+      kpiAlerts.textContent = totalAlerts;
+      kpiHealth.textContent = `${health}%`;
+
+      // color coding
+      if(health > 80) kpiHealth.style.color = 'green';
+      else if(health > 50) kpiHealth.style.color = 'orange';
+      else kpiHealth.style.color = 'red';
     }
 
     function openFauxton(){ window.open("http://localhost:5984/_utils/", "_blank"); }
