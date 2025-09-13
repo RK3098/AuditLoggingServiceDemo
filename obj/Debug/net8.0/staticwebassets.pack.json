@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\KOUNDINYA\\OneDrive\\Desktop\\Projects\\AuditLoggingService\\Audit.RealTimeDemo\\Audit.IngestApi\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Audit.IngestApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Audit.IngestApi.props",
+      "PackagePath": "build\\Audit.IngestApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Audit.IngestApi.props",
+      "PackagePath": "buildMultiTargeting\\Audit.IngestApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Audit.IngestApi.props",
+      "PackagePath": "buildTransitive\\Audit.IngestApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

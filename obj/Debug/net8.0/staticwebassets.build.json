@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "MKBP3cdBU9noGs2KdeZBSJUUhhwp1FQs7VUhtcJFu9o=",
+  "Source": "Audit.IngestApi",
+  "BasePath": "_content/Audit.IngestApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Audit.IngestApi\\wwwroot",
+      "Source": "Audit.IngestApi",
+      "ContentRoot": "C:\\Users\\KOUNDINYA\\OneDrive\\Desktop\\Projects\\AuditLoggingService\\Audit.RealTimeDemo\\Audit.IngestApi\\wwwroot\\",
+      "BasePath": "_content/Audit.IngestApi",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\KOUNDINYA\\OneDrive\\Desktop\\Projects\\AuditLoggingService\\Audit.RealTimeDemo\\Audit.IngestApi\\wwwroot\\index.html",
+      "SourceId": "Audit.IngestApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\KOUNDINYA\\OneDrive\\Desktop\\Projects\\AuditLoggingService\\Audit.RealTimeDemo\\Audit.IngestApi\\wwwroot\\",
+      "BasePath": "_content/Audit.IngestApi",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}
